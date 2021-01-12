@@ -3,3 +3,4 @@ composer.phar
 .phpunit.result.cache
 .idea
 /build/
+/apps/**/var/
