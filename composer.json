@@ -9,7 +9,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "LobbyWars\\": "src/",
+      "Shared\\": "src/Shared",
+      "LobbyWars\\": "src/LobbyWars",
       "LobbyWarsConsole\\": "apps/LobbyWarsConsole/src/"
     }
   },
