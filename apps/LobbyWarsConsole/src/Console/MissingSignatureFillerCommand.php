@@ -43,7 +43,7 @@ class MissingSignatureFillerCommand extends Command
                 $input->getArgument('secondContract')
             ));
 
-            $output->writeln('Missing signature: '.$response->signature());
+            $output->writeln('Least signature needed to win: '.$response->signature());
             return Command::SUCCESS;
         } catch (Throwable $exception) {
             $output->writeln($exception->getMessage());

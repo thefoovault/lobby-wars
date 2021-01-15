@@ -15,6 +15,6 @@ class SignatureWithMoreThanOneEmptyValue extends DomainError
 
     function errorMessage(): string
     {
-        return 'Signatures cannot have more than one empty value';
+        return 'Signature group cannot have more than one empty value';
     }
 }

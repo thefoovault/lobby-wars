@@ -26,7 +26,7 @@ class SignaturesFactoryTest extends TestCase
     /** @test */
     public function Should_ReturnValidSignaturesWithEmptySignatures(): void
     {
-        $signatures = SignaturesFactory::createWithAnEmptySignature(EmptySignature::TYPE);
+        $signatures = SignaturesFactory::createWithMaximumOneEmptySignature(EmptySignature::TYPE);
         $this->assertInstanceOf(Signatures::class, $signatures);
         $this->assertEquals(EmptySignature::TYPE, $signatures->signatures());
     }
@@ -44,7 +44,7 @@ class SignaturesFactoryTest extends TestCase
     {
         $this->expectException(SignatureWithMoreThanOneEmptyValue::class);
 
-        SignaturesFactory::createWithAnEmptySignature(EmptySignature::TYPE . EmptySignature::TYPE);
+        SignaturesFactory::createWithMaximumOneEmptySignature(EmptySignature::TYPE . EmptySignature::TYPE);
     }
 
     /** @test */

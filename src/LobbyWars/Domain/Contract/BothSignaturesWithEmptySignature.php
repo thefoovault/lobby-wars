@@ -15,6 +15,6 @@ class BothSignaturesWithEmptySignature extends DomainError
 
     function errorMessage(): string
     {
-        return 'Both signatures have an empty signature';
+        return 'Both signature groups have an empty signature';
     }
 }

@@ -8,22 +8,22 @@ use Shared\Domain\Bus\Query\Query;
 
 final class ContractWinnerQuery implements Query
 {
-    private string $firstContract;
-    private string $secondContract;
+    private string $firstSignaturesGroup;
+    private string $secondSignaturesGroup;
 
-    public function __construct(string $firstContract, string $secondContract)
+    public function __construct(string $firstSignaturesGroup, string $secondSignaturesGroup)
     {
-        $this->firstContract = $firstContract;
-        $this->secondContract = $secondContract;
+        $this->firstSignaturesGroup = $firstSignaturesGroup;
+        $this->secondSignaturesGroup = $secondSignaturesGroup;
     }
 
     public function firstSignaturesGroup(): string
     {
-        return $this->firstContract;
+        return $this->firstSignaturesGroup;
     }
 
     public function secondSignaturesGroup(): string
     {
-        return $this->secondContract;
+        return $this->secondSignaturesGroup;
     }
 }

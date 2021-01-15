@@ -14,24 +14,24 @@ use LobbyWars\Domain\Signatures\SignaturesFactory;
 
 class MissingSignatureFillerService
 {
-    private const POSSIBLE_FILLS = [
+    private const VALID_FILLS = [
         Validator::TYPE,
         Notary::TYPE,
-        King::TYPE
+        King::TYPE,
     ];
 
     public function fill(string $firstSignaturesGroup, string $secondSignaturesGroup): SignatureType
     {
-        $firstSignaturesParty = SignaturesFactory::createWithAnEmptySignature($firstSignaturesGroup);
-        $secondSignaturesParty = SignaturesFactory::createWithAnEmptySignature($secondSignaturesGroup);
+        $firstSignaturesParty = SignaturesFactory::createWithMaximumOneEmptySignature($firstSignaturesGroup);
+        $secondSignaturesParty = SignaturesFactory::createWithMaximumOneEmptySignature($secondSignaturesGroup);
 
         $this->assertValidSignatures($firstSignaturesParty, $secondSignaturesParty);
 
         if ($firstSignaturesParty->hasEmptySignature()) {
             return $this->getMissingSignature($firstSignaturesParty, $secondSignaturesParty);
-        } else {
-           return $this->getMissingSignature($secondSignaturesParty, $firstSignaturesParty);
         }
+
+        return $this->getMissingSignature($secondSignaturesParty, $firstSignaturesParty);
     }
 
     private function assertValidSignatures(Signatures $firstSignaturesParty, Signatures $secondSignaturesParty): void
@@ -52,11 +52,11 @@ class MissingSignatureFillerService
     {
         $totalPointsGoal = $signatureComparison->totalPoints();
 
-        foreach (self::POSSIBLE_FILLS as $possible_fill_type) {
-            $signatures = SignaturesFactory::createWithAnEmptySignature($signaturesWithAnEmptySignature->signatures() . $possible_fill_type);
+        foreach (self::VALID_FILLS as $valid_fill_type) {
+            $signatures = SignaturesFactory::createWithMaximumOneEmptySignature($signaturesWithAnEmptySignature->signatures() . $valid_fill_type);
 
             if ($signatures->totalPoints()->value() > $totalPointsGoal->value()) {
-                return SignatureTypeFactory::create($possible_fill_type);
+                return SignatureTypeFactory::create($valid_fill_type);
             }
         }
 

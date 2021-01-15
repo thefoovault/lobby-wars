@@ -8,6 +8,8 @@ use LobbyWars\Application\ContractWinner\ContractWinner;
 use LobbyWars\Application\ContractWinner\ContractWinnerQuery;
 use LobbyWars\Application\ContractWinner\ContractWinnerResponse;
 use LobbyWars\Domain\Contract\ContractWinnerService;
+use LobbyWars\Domain\Signature\Notary;
+use LobbyWars\Domain\Signature\Validator;
 use PHPUnit\Framework\TestCase;
 use Shared\Domain\Bus\Query\QueryResponse;
 
@@ -31,8 +33,13 @@ class ContractWinnerTest extends TestCase
     public function Should_ReturnValidContractWinner_FromValidData(): void
     {
         /** @var ContractWinnerResponse $result */
-        $result = $this->contractWinner->exec(new ContractWinnerQuery('NN', 'VV'));
+        $result = $this->contractWinner->exec(
+            new ContractWinnerQuery(
+                Notary::TYPE . Notary::TYPE,
+                Validator::TYPE
+            )
+        );
         $this->assertInstanceOf(QueryResponse::class, $result);
-        $this->assertEquals('NN', $result->signatures());
+        $this->assertEquals(Notary::TYPE . Notary::TYPE, $result->signatures());
     }
 }

@@ -31,11 +31,6 @@ abstract class PositiveIntegerValueObject
         return new static($this->value() + $value->value());
     }
 
-    public function subtract(self $value): self
-    {
-        return new static($this->value() - $value->value());
-    }
-
     public function __toString(): string
     {
         return (string)$this->value();

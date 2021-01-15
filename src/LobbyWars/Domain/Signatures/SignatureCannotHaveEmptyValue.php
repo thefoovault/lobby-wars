@@ -15,6 +15,6 @@ class SignatureCannotHaveEmptyValue extends DomainError
 
     function errorMessage(): string
     {
-        return 'The signatures cannot be empty';
+        return 'The signature groups cannot be empty';
     }
 }

@@ -19,7 +19,7 @@ class SignaturesFactory
         $signaturesCollection = [];
 
         foreach ($signatures as $signature) {
-            if ($signature == EmptySignature::TYPE) {
+            if ($signature === EmptySignature::TYPE) {
                 throw new SignatureCannotHaveEmptyValue();
             }
             $signaturesCollection[] = SignatureTypeFactory::create($signature);
@@ -28,14 +28,14 @@ class SignaturesFactory
         return new Signatures($signaturesCollection);
     }
 
-    public static function createWithAnEmptySignature(string $plainSignatures): Signatures
+    public static function createWithMaximumOneEmptySignature(string $plainSignatures): Signatures
     {
         $signatures = str_split($plainSignatures);
         $signaturesCollection = [];
 
         $hasEmptySignature = false;
         foreach ($signatures as $signature) {
-            if (EmptySignature::TYPE == $signature) {
+            if (EmptySignature::TYPE === $signature) {
                 if ($hasEmptySignature) {
                     throw new SignatureWithMoreThanOneEmptyValue();
                 }

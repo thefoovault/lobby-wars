@@ -10,7 +10,7 @@ final class SignatureTypeFactory
         King::TYPE,
         Notary::TYPE,
         Validator::TYPE,
-        EmptySignature::TYPE
+        EmptySignature::TYPE,
     ];
 
     private function __construct()
@@ -22,10 +22,10 @@ final class SignatureTypeFactory
         self::assertValidType($signatureType);
 
         switch ($signatureType) {
-            case King::TYPE: return new King(); break;
-            case Notary::TYPE: return new Notary(); break;
-            case Validator::TYPE: return new Validator(); break;
-            case EmptySignature::TYPE: return new EmptySignature(); break;
+            case King::TYPE: return new King();
+            case Notary::TYPE: return new Notary();
+            case Validator::TYPE: return new Validator();
+            case EmptySignature::TYPE: return new EmptySignature();
         }
     }
 
