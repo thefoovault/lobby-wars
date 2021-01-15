@@ -8,9 +8,8 @@ use LobbyWars\Domain\Contract\ContractWinnerService;
 use Shared\Domain\Bus\Query\Query;
 use Shared\Domain\Bus\Query\QueryHandler;
 use Shared\Domain\Bus\Query\QueryResponse;
-use Shared\Infrastructure\Bus\Query\QueryHandlerWrapper;
 
-final class ContractWinner extends QueryHandlerWrapper implements QueryHandler
+final class ContractWinner implements QueryHandler
 {
     private ContractWinnerService $contractWinnerService;
 

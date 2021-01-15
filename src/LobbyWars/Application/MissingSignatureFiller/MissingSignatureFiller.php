@@ -8,9 +8,8 @@ use LobbyWars\Domain\Contract\MissingSignatureFillerService;
 use Shared\Domain\Bus\Query\Query;
 use Shared\Domain\Bus\Query\QueryHandler;
 use Shared\Domain\Bus\Query\QueryResponse;
-use Shared\Infrastructure\Bus\Query\QueryHandlerWrapper;
 
-class MissingSignatureFiller extends QueryHandlerWrapper implements QueryHandler
+class MissingSignatureFiller implements QueryHandler
 {
     private MissingSignatureFillerService $missingSignatureFillerService;
 
