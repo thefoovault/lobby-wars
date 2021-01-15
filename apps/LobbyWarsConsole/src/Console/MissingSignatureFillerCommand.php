@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 
-class MissingSignatureFiller extends Command
+class MissingSignatureFillerCommand extends Command
 {
     protected static $defaultName = 'lobbyWars:missingSignatureFiller';
 
