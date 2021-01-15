@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signatures;
 
+use LobbyWars\Domain\Signature\King;
 use LobbyWars\Domain\Signature\Points;
 use LobbyWars\Domain\Signature\SignatureType;
+use LobbyWars\Domain\Signature\Type;
+use LobbyWars\Domain\Signature\Validator;
 use Shared\Domain\Collection;
 
 final class Signatures extends Collection
@@ -22,13 +25,34 @@ final class Signatures extends Collection
 
     public function totalPoints(): Points
     {
-        $points = 0;
-        /** @var SignatureType $item */
+        $points = new Points(0);
+        $hasKingSignature = $this->hasKingSignature();
+        /** @var SignatureType $signature */
         foreach ($this->items() as $signature) {
-            $points += $signature->points()->value();
+            $isValidatorType = $this->isValidatorType($signature->type());
+            if (!($hasKingSignature && $isValidatorType)) {
+                $points = $points->add($signature->points());
+            }
         }
 
-        return new Points($points);
+        return $points;
+    }
+
+    private function hasKingSignature()
+    {
+        /** @var SignatureType $signature */
+        foreach ($this->items() as $signature) {
+            if ($signature->type() == King::TYPE) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function isValidatorType(Type $type)
+    {
+        return $type->value() == Validator::TYPE;
     }
 
     public function signatures(): string

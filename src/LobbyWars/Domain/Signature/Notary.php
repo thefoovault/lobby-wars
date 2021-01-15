@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signature;
 
-final class ValidatorType implements SignatureType
+final class Notary implements SignatureType
 {
-    private const TYPE = 'V';
-    private const POINTS = 1;
+    public const TYPE = 'N';
+    private const POINTS = 2;
 
     public function type(): Type
     {

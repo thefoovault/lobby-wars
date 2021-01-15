@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signature;
 
-final class KingType implements SignatureType
+final class Validator implements SignatureType
 {
-    private const TYPE = 'K';
-    private const POINTS = 5;
+    public const TYPE = 'V';
+    private const POINTS = 1;
 
     public function type(): Type
     {

@@ -6,7 +6,7 @@ namespace LobbyWars\Domain\Signature;
 
 interface SignatureType
 {
-    public function type();
+    public function type(): Type;
 
     public function points(): Points;
 }
