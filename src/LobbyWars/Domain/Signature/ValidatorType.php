@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signature;
 
-class ValidatorType implements SignatureType
+final class ValidatorType implements SignatureType
 {
     private const TYPE = 'V';
     private const POINTS = 1;

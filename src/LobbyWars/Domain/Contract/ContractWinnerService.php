@@ -7,7 +7,7 @@ namespace LobbyWars\Domain\Contract;
 use LobbyWars\Domain\Signatures\Signatures;
 use LobbyWars\Domain\Signatures\SignaturesFactory;
 
-class ContractWinnerService
+final class ContractWinnerService
 {
     public function getWinner(string $firstSignaturesGroup, string $secondSignaturesGroup): Signatures
     {

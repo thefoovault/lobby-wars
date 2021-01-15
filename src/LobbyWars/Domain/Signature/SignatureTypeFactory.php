@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signature;
 
-class SignatureTypeFactory
+final class SignatureTypeFactory
 {
     private const KING = 'K';
     private const NOTARY = 'N';

@@ -10,7 +10,7 @@ use Shared\Domain\Bus\Query\QueryHandler;
 use Shared\Domain\Bus\Query\QueryResponse;
 use Shared\Infrastructure\Bus\Query\QueryHandlerWrapper;
 
-class ContractWinner extends QueryHandlerWrapper implements QueryHandler
+final class ContractWinner extends QueryHandlerWrapper implements QueryHandler
 {
     private ContractWinnerService $contractWinnerService;
 

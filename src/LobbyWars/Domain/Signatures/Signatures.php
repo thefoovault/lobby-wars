@@ -8,7 +8,7 @@ use LobbyWars\Domain\Signature\Points;
 use LobbyWars\Domain\Signature\SignatureType;
 use Shared\Domain\Collection;
 
-class Signatures extends Collection
+final class Signatures extends Collection
 {
     public function __construct(array $signatures)
     {

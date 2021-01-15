@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signature;
 
-class KingType implements SignatureType
+final class KingType implements SignatureType
 {
     private const TYPE = 'K';
     private const POINTS = 5;

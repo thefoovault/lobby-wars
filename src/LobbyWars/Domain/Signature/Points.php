@@ -6,6 +6,6 @@ namespace LobbyWars\Domain\Signature;
 
 use Shared\Domain\ValueObject\PositiveIntegerValueObject;
 
-class Points extends PositiveIntegerValueObject
+final class Points extends PositiveIntegerValueObject
 {
 }

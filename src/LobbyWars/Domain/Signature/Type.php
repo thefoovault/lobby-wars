@@ -6,6 +6,6 @@ namespace LobbyWars\Domain\Signature;
 
 use Shared\Domain\ValueObject\StringValueObject;
 
-class Type extends StringValueObject
+final class Type extends StringValueObject
 {
 }

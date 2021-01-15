@@ -6,7 +6,7 @@ namespace LobbyWars\Domain\Contract;
 
 use LobbyWars\Domain\Signatures\Signatures;
 
-class Contract
+final class Contract
 {
     private array $signatures;
 

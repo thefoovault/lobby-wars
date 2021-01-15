@@ -6,7 +6,7 @@ namespace LobbyWars\Application\ContractWinner;
 
 use Shared\Domain\Bus\Query\QueryResponse;
 
-class ContractWinnerResponse implements QueryResponse
+final class ContractWinnerResponse implements QueryResponse
 {
     private string $signatures;
 

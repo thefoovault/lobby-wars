@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signature;
 
-class NotaryType implements SignatureType
+final class NotaryType implements SignatureType
 {
     private const TYPE = 'N';
     private const POINTS = 2;
