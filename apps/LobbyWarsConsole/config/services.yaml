@@ -9,3 +9,13 @@ services:
         resource: '../../../src/LobbyWars/'
     Shared\:
         resource: '../../../src/Shared/'
+
+    _instanceof:
+        Shared\Domain\Bus\Query\QueryHandler:
+            tags:
+                - { name: messenger.message_handler, bus: query.bus }
+
+framework:
+    messenger:
+        buses:
+            query.bus:
