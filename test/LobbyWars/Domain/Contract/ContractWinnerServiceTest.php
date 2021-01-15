@@ -21,7 +21,7 @@ class ContractWinnerServiceTest extends TestCase
     }
 
     /** @test */
-    public function Should_ReturnValidWinner()
+    public function Should_ReturnValidWinner(): void
     {
         $winner = $this->contractWinnerService->getWinner(King::TYPE, Notary::TYPE);
         $this->assertInstanceOf(Signatures::class, $winner);
@@ -29,7 +29,7 @@ class ContractWinnerServiceTest extends TestCase
     }
 
     /** @test */
-    public function Should_ThrowInvalidSignature()
+    public function Should_ThrowInvalidSignature(): void
     {
         $this->expectException(InvalidSignature::class);
         $this->contractWinnerService->getWinner(King::TYPE, '');

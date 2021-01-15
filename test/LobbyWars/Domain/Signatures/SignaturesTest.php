@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 class SignaturesTest extends TestCase
 {
     /** @test */
-    public function Should_ReturnCorrectSignaturesText_GivenMultipleSignatures()
+    public function Should_ReturnCorrectSignaturesText_GivenMultipleSignatures():void
     {
         $kingSignature = SignatureTypeFactory::create(King::TYPE);
         $notarySignature = SignatureTypeFactory::create(Notary::TYPE);
@@ -31,7 +31,7 @@ class SignaturesTest extends TestCase
     }
 
     /** @test */
-    public function Should_ReturnCorrectPoints_GivenAKing()
+    public function Should_ReturnCorrectPoints_GivenAKing(): void
     {
         $kingSignature = SignatureTypeFactory::create(King::TYPE);
 
@@ -45,7 +45,7 @@ class SignaturesTest extends TestCase
     }
 
     /** @test */
-    public function Should_ReturnCorrectPoints_GivenANotary()
+    public function Should_ReturnCorrectPoints_GivenANotary(): void
     {
         $notarySignature = SignatureTypeFactory::create(Notary::TYPE);
 
@@ -59,7 +59,7 @@ class SignaturesTest extends TestCase
     }
 
     /** @test */
-    public function Should_ReturnCorrectPoints_GivenAValidator()
+    public function Should_ReturnCorrectPoints_GivenAValidator(): void
     {
         $validatorSignature = SignatureTypeFactory::create(Validator::TYPE);
 
@@ -73,7 +73,7 @@ class SignaturesTest extends TestCase
     }
 
     /** @test */
-    public function Should_ReturnCorrectPoints_GivenAKingAndValidator()
+    public function Should_ReturnCorrectPoints_GivenAKingAndValidator(): void
     {
         $kingSignature = SignatureTypeFactory::create(King::TYPE);
         $validatorSignature = SignatureTypeFactory::create(Validator::TYPE);
@@ -89,7 +89,7 @@ class SignaturesTest extends TestCase
     }
 
     /** @test */
-    public function Should_ReturnCorrectPoints_GivenMultipleSignatures()
+    public function Should_ReturnCorrectPoints_GivenMultipleSignatures(): void
     {
         $kingSignature = SignatureTypeFactory::create(King::TYPE);
         $notarySignature = SignatureTypeFactory::create(Notary::TYPE);

@@ -39,7 +39,7 @@ final class Signatures extends Collection
         return $points;
     }
 
-    private function hasKingSignature()
+    private function hasKingSignature(): bool
     {
         /** @var SignatureType $signature */
         foreach ($this->items() as $signature) {
@@ -51,7 +51,7 @@ final class Signatures extends Collection
         return false;
     }
 
-    private function isValidatorType(Type $type)
+    private function isValidatorType(Type $type): bool
     {
         return $type->value() ===Validator::TYPE;
     }
@@ -67,7 +67,7 @@ final class Signatures extends Collection
         return $signatures;
     }
 
-    public function hasEmptySignature()
+    public function hasEmptySignature(): bool
     {
         /** @var SignatureType $signature */
         foreach ($this->items() as $signature) {

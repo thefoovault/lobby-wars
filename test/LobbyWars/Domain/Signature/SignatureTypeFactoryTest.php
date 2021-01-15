@@ -14,28 +14,28 @@ use PHPUnit\Framework\TestCase;
 class SignatureTypeFactoryTest extends TestCase
 {
     /** @test */
-    public function Should_ReturnKing()
+    public function Should_ReturnKing(): void
     {
         $kingSignature = SignatureTypeFactory::create(King::TYPE);
         $this->assertInstanceOf(King::class, $kingSignature);
     }
 
     /** @test */
-    public function Should_ReturnNotary()
+    public function Should_ReturnNotary(): void
     {
         $notarySignature = SignatureTypeFactory::create(Notary::TYPE);
         $this->assertInstanceOf(Notary::class, $notarySignature);
     }
 
     /** @test */
-    public function Should_ReturnValidator()
+    public function Should_ReturnValidator(): void
     {
         $validatorSignature = SignatureTypeFactory::create(Validator::TYPE);
         $this->assertInstanceOf(Validator::class, $validatorSignature);
     }
 
     /** @test */
-    public function Should_ThrowInvalidSignature()
+    public function Should_ThrowInvalidSignature(): void
     {
         $this->expectException(InvalidSignature::class);
 

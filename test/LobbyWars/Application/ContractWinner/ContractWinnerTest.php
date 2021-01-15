@@ -28,7 +28,7 @@ class ContractWinnerTest extends TestCase
     }
 
     /** @test */
-    public function Should_ReturnValidContractWinner_FromValidData()
+    public function Should_ReturnValidContractWinner_FromValidData(): void
     {
         /** @var ContractWinnerResponse $result */
         $result = $this->contractWinner->exec(new ContractWinnerQuery('NN', 'VV'));

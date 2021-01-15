@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class SignaturesFactoryTest extends TestCase
 {
     /** @test */
-    public function Should_ReturnValidSignatures()
+    public function Should_ReturnValidSignatures(): void
     {
         $signatures = SignaturesFactory::createWithoutEmptySignatures(Notary::TYPE);
         $this->assertInstanceOf(Signatures::class, $signatures);
@@ -21,7 +21,7 @@ class SignaturesFactoryTest extends TestCase
     }
 
     /** @test */
-    public function Should_ThrowInvalidSignature()
+    public function Should_ThrowInvalidSignature(): void
     {
         $this->expectException(InvalidSignature::class);
 
