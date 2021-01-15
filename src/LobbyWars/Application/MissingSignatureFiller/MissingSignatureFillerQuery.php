@@ -17,12 +17,12 @@ class MissingSignatureFillerQuery implements Query
         $this->secondContract = $secondContract;
     }
 
-    public function firstContract(): string
+    public function firstSignaturesGroup(): string
     {
         return $this->firstContract;
     }
 
-    public function secondContract(): string
+    public function secondSignaturesGroup(): string
     {
         return $this->secondContract;
     }

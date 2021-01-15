@@ -28,8 +28,8 @@ final class ContractWinner extends QueryHandlerWrapper implements QueryHandler
     {
         /** @var ContractWinnerQuery $query */
         $winner = $this->contractWinnerService->getWinner(
-            $query->firstContract(),
-            $query->secondContract()
+            $query->firstSignaturesGroup(),
+            $query->secondSignaturesGroup()
         );
 
         return new ContractWinnerResponse(

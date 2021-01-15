@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signatures;
 
+use LobbyWars\Domain\Signature\EmptySignature;
 use LobbyWars\Domain\Signature\King;
 use LobbyWars\Domain\Signature\Points;
 use LobbyWars\Domain\Signature\SignatureType;
@@ -42,7 +43,7 @@ final class Signatures extends Collection
     {
         /** @var SignatureType $signature */
         foreach ($this->items() as $signature) {
-            if ($signature->type() == King::TYPE) {
+            if ($signature->type()->value() === King::TYPE) {
                 return true;
             }
         }
@@ -52,7 +53,7 @@ final class Signatures extends Collection
 
     private function isValidatorType(Type $type)
     {
-        return $type->value() == Validator::TYPE;
+        return $type->value() ===Validator::TYPE;
     }
 
     public function signatures(): string
@@ -64,5 +65,17 @@ final class Signatures extends Collection
         }
 
         return $signatures;
+    }
+
+    public function hasEmptySignature()
+    {
+        /** @var SignatureType $signature */
+        foreach ($this->items() as $signature) {
+            if ($signature->type()->value() === EmptySignature::TYPE) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

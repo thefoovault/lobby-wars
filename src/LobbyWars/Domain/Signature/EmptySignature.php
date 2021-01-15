@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace LobbyWars\Domain\Signature;
 
-final class King implements SignatureType
+class EmptySignature implements SignatureType
 {
-    public const TYPE = 'K';
-    public const POINTS = 5;
+    public const TYPE = '#';
+    private const POINTS = 0;
 
     public function type(): Type
     {

@@ -7,7 +7,7 @@ namespace LobbyWars\Domain\Signature;
 final class Validator implements SignatureType
 {
     public const TYPE = 'V';
-    private const POINTS = 1;
+    public const POINTS = 1;
 
     public function type(): Type
     {

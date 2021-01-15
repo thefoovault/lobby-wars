@@ -15,7 +15,7 @@ class SignaturesFactoryTest extends TestCase
     /** @test */
     public function Should_ReturnValidSignatures()
     {
-        $signatures = SignaturesFactory::create(Notary::TYPE);
+        $signatures = SignaturesFactory::createWithoutEmptySignatures(Notary::TYPE);
         $this->assertInstanceOf(Signatures::class, $signatures);
         $this->assertEquals(Notary::TYPE, $signatures->signatures());
     }
@@ -25,6 +25,6 @@ class SignaturesFactoryTest extends TestCase
     {
         $this->expectException(InvalidSignature::class);
 
-        SignaturesFactory::create('');
+        SignaturesFactory::createWithoutEmptySignatures('');
     }
 }

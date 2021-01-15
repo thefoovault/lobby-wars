@@ -7,7 +7,7 @@ namespace LobbyWars\Domain\Signature;
 final class Notary implements SignatureType
 {
     public const TYPE = 'N';
-    private const POINTS = 2;
+    public const POINTS = 2;
 
     public function type(): Type
     {

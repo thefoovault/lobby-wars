@@ -9,7 +9,8 @@ final class SignatureTypeFactory
     private const VALID_TYPES = [
         King::TYPE,
         Notary::TYPE,
-        Validator::TYPE
+        Validator::TYPE,
+        EmptySignature::TYPE
     ];
 
     private function __construct()
@@ -24,6 +25,7 @@ final class SignatureTypeFactory
             case King::TYPE: return new King(); break;
             case Notary::TYPE: return new Notary(); break;
             case Validator::TYPE: return new Validator(); break;
+            case EmptySignature::TYPE: return new EmptySignature(); break;
         }
     }
 

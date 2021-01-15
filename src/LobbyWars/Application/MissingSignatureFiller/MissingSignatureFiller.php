@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LobbyWars\Application\MissingSignatureFiller;
 
+use LobbyWars\Domain\Contract\MissingSignatureFillerService;
 use Shared\Domain\Bus\Query\Query;
 use Shared\Domain\Bus\Query\QueryHandler;
 use Shared\Domain\Bus\Query\QueryResponse;
@@ -11,8 +12,11 @@ use Shared\Infrastructure\Bus\Query\QueryHandlerWrapper;
 
 class MissingSignatureFiller extends QueryHandlerWrapper implements QueryHandler
 {
-    public function __construct()
+    private MissingSignatureFillerService $missingSignatureFillerService;
+
+    public function __construct(MissingSignatureFillerService $missingSignatureFillerService)
     {
+        $this->missingSignatureFillerService = $missingSignatureFillerService;
     }
 
     public function __invoke(MissingSignatureFillerQuery $query): QueryResponse
@@ -22,8 +26,14 @@ class MissingSignatureFiller extends QueryHandlerWrapper implements QueryHandler
 
     public function exec(Query $query): QueryResponse
     {
+        /** @var MissingSignatureFillerQuery $query */
+        $result = $this->missingSignatureFillerService->fill(
+            $query->firstSignaturesGroup(),
+            $query->secondSignaturesGroup()
+        );
+
        return new MissingSignatureFillerResponse(
-            'test'
+            $result->type()->value()
         );
     }
 }
