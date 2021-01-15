@@ -1,4 +1,4 @@
-#Dependencies
+# Dependencies
 
 - Docker
 
@@ -16,9 +16,9 @@ Once project is downloaded, we will execute:
 
 For more actions, execute `make` without arguments.
 
-#Lobby Wars
+# Lobby Wars
 
-##First phase: how to run
+## First phase: how to run
 The entry point for this use case is the `ContractWinnerCommand`, which always expects **2** arguments. If there is any problem, captures the exception in this point. 
 
 In order to execute, you should:
@@ -27,7 +27,7 @@ In order to execute, you should:
 
 The command output will show the winner signatures, according to the specified rules.
 
-##Second phase: how to run
+## Second phase: how to run
 The entry point for this use case is the `MissingSignatureFillerCommand`, which always expects **2** arguments. If there is any problem, captures the exception in this point. 
 
 In order to execute, you should:
