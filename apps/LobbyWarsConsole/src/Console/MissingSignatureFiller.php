@@ -11,6 +11,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 
 class MissingSignatureFiller extends Command
 {
@@ -35,13 +36,18 @@ class MissingSignatureFiller extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var MissingSignatureFillerResponse $response */
-        $response = $this->queryBus->dispatch(new MissingSignatureFillerQuery(
-            $input->getArgument('firstContract'),
-            $input->getArgument('secondContract')
-        ));
+        try {
+            /** @var MissingSignatureFillerResponse $response */
+            $response = $this->queryBus->dispatch(new MissingSignatureFillerQuery(
+                $input->getArgument('firstContract'),
+                $input->getArgument('secondContract')
+            ));
 
-        $output->writeln('Missing signature: '.$response->signature());
-        return Command::SUCCESS;
+            $output->writeln('Missing signature: '.$response->signature());
+            return Command::SUCCESS;
+        } catch (Throwable $exception) {
+            $output->writeln($exception->getMessage());
+            return Command::FAILURE;
+        }
     }
 }

@@ -11,6 +11,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 
 final class ContractWinnerCommand extends Command
 {
@@ -35,13 +36,18 @@ final class ContractWinnerCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var ContractWinnerResponse $response */
-        $response = $this->queryBus->dispatch(new ContractWinnerQuery(
-            $input->getArgument('firstContract'),
-            $input->getArgument('secondContract')
-        ));
+        try {
+            /** @var ContractWinnerResponse $response */
+            $response = $this->queryBus->dispatch(new ContractWinnerQuery(
+                $input->getArgument('firstContract'),
+                $input->getArgument('secondContract')
+            ));
 
-        $output->writeln('Winner: '.$response->signatures());
-        return Command::SUCCESS;
+            $output->writeln('Winner: '.$response->signatures());
+            return Command::SUCCESS;
+        } catch (Throwable $exception) {
+            $output->writeln($exception->getMessage());
+            return Command::FAILURE;
+        }
     }
 }
